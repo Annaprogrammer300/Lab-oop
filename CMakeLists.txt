@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.11)
 
-project(functions CXX)
+project(Function1 CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 
@@ -18,8 +18,8 @@ if(MSVC)
 endif()
 
 # Объявляем библиотеку
-add_library(functions SHARED "include/functions/functions.h" "src/functions.cc")
-target_include_directories(functions PUBLIC "include")
+add_library(Function1 SHARED "include/Function1/Function1.h" "src/Function1.cc")
+target_include_directories(Function1 PUBLIC "include")
 
 # Подключаем googletest
 include(FetchContent)
@@ -29,4 +29,4 @@ FetchContent_MakeAvailable(googletest)
 
 # Объявляем тесты
 add_executable(functions_tests "tests/functions_tests.cc")
-target_link_libraries(functions_tests functions GTest::gtest_main)
+target_link_libraries(functions_tests Function1 GTest::gtest_main)

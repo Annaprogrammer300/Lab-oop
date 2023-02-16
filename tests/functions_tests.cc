@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <functions/functions.h>
+#include <Function1/Function1.h>
 
 TEST(FunctionsTests, SumStubTest1) {
     // Arrange
