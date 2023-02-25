@@ -26,15 +26,13 @@ namespace function {
 		Function();
 		Type get_type() const;//получать тип
 		float get_a() const;//получать а
+		float get_b() const;
 		float get_c() const;
 		float compute_value(float x, float b) const;//вфчислить значение
 
 		Function compute_derivative() const;//вычислить производную
 
 	};
-
-	bool operator==(const Function& Ihs, const Function rhs);
-	bool operator!=(const Function& Ihs, const Function rhs);
 
 
 	class Functionlist {

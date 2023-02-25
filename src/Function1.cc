@@ -24,9 +24,12 @@ Type Function::get_type() const {
 
 float Function::get_a() const {
     return _a;
-
-
 }
+
+float Function::get_b() const {
+    return _b;
+}
+
 float Function::get_c() const {
     return _c;
 }
@@ -34,9 +37,9 @@ float Function::get_c() const {
 float Function::compute_value(const float x, const float b) const {
     switch (_type) {
     case Type::log:
-        return _c * log(x);
+        return _c * log(abs(x));
     case Type::power:
-        return _a * pow(x, b);
+        return _a * pow(x, _b);
     default:
         throw runtime_error("[Function::compute_value] Invalid function type.");
     }
@@ -47,7 +50,7 @@ Function Function::compute_derivative() const {
     case Type::log:
         return create_log(1/_a);
     case Type::power:
-        return create_power(_b*_a^(_b-1));
+        return create_power(_b*pow(_a,_b-1));
     default:
         throw runtime_error("[Function::compute_derivative] Invalid function type.");
     }

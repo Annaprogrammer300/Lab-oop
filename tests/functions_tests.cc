@@ -1,27 +1,11 @@
 #include <gtest/gtest.h>
 
 #include <Function1/Function1.h>
+using namespace function;
 
-TEST(FunctionsTests, SumStubTest1) {
-    // Arrange
-    int lhs = 2;
-    int rhs = 3;
-    
-    // Act
-    int r = sum_stub(lhs, rhs);
-    
-    // Assert
-    EXPECT_EQ(r, 5);
-}
 
-TEST(FunctionsTests, SumStubTest2) {
-    // Arrange
-    int lhs = -1;
-    int rhs = 3;
-    
-    // Act
-    int r = sum_stub(lhs, rhs);
-    
-    // Assert
-    EXPECT_EQ(r, 2);
+
+TEST(FunctionTests, log_ComputeValue) {
+    const auto log1 = Function::create_log(1);
+    EXPECT_NEAR(log1.compute_value(1, 3), 0, E);
 }
