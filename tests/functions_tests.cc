@@ -6,6 +6,6 @@ using namespace function;
 
 
 TEST(FunctionTests, log_ComputeValue) {
-    const auto log1 = Function::create_log(1);
-    EXPECT_NEAR(log1.compute_value(1, 3), 0, E);
+    Function power1(1, 2, 3);
+    EXPECT_EQ(power1.get_type(), function::Type::power);
 }

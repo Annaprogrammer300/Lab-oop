@@ -6,7 +6,7 @@ namespace function {
 
 	enum class Type {
 		log,
-		power
+		power,
 
 	};
 
@@ -16,6 +16,7 @@ namespace function {
 		float _a;
 		float _b;
 		float _c;
+		float _x;
 
 		Function(Type type, float a);
 
@@ -23,18 +24,20 @@ namespace function {
 		static Function create_log(float a);
 		static Function create_power(float a);
 
-		Function();
+		Function(float a, float x, float b);
 		Type get_type() const;//получать тип
 		float get_a() const;//получать а
 		float get_b() const;
 		float get_c() const;
-		float compute_value(float x, float b) const;//вфчислить значение
+		float compute_value(float x, float b) const;//вычислить значение
 
 		Function compute_derivative() const;//вычислить производную
+		Function compute_antiderivative();
+
 
 	};
 
-
+	//надо подумать
 	class Functionlist {
 	public:
 		static const int CAPACITY = 10;
