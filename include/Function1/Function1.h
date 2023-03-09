@@ -18,21 +18,20 @@ namespace function {
 		float _c;
 		float _x;
 
-		Function(Type type, float a);
+		//Function(Type type);
 
 	public:
-		static Function create_log(float a);
-		static Function create_power(float a);
-
+		
 		Function(float a, float x, float b);
+		Function(float c, float x);
 		Type get_type() const;//получать тип
 		float get_a() const;//получать а
 		float get_b() const;
 		float get_c() const;
-		float compute_value(float x, float b) const;//вычислить значение
+		float compute_value() const;//вычислить значение
 
-		Function compute_derivative() const;//вычислить производную
-		Function compute_antiderivative();
+		float compute_derivative() const;//вычислить производную
+		float compute_antiderivative() const;
 
 
 	};
