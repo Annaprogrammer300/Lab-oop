@@ -2,7 +2,7 @@
 
 namespace function {
 
-	const float E = 2.718f;
+	//const float E = 2.718f;
 
 	enum class Type {
 		log,
@@ -16,20 +16,20 @@ namespace function {
 		float _a;
 		float _b;
 		float _c;
-		float _x;
+		float _x;//убрать так как это не параметры функции
 
 		//Function(Type type);
 
 	public:
-		
+		Function();
 		Function(float a, float x, float b);
-		Function(float c, float x);
+		Function(float x, float c);
 		Type get_type() const;//получать тип
 		float get_a() const;//получать а
 		float get_b() const;
 		float get_c() const;
+		float get_x() const;
 		float compute_value() const;//вычислить значение
-
 		float compute_derivative() const;//вычислить производную
 		float compute_antiderivative() const;
 
@@ -37,19 +37,22 @@ namespace function {
 	};
 
 	//надо подумать
-	class Functionlist {
+
+	//надо найти минимальны элемент в функции проихводной с данным аргументом
+	class Container {
 	public:
-		static const int CAPACITY = 10;
+		static const int N = 10;
 	private:
-		Function _function[CAPACITY];
-		int _size;
+		Function listf[N];
+		int corsize = 0;
 	public:
-		Functionlist();
-		int size() const;
-		Function operator[](int index) const;
-		void add(Function f);
+		Container();
+		Container(Function s[], int size);
+		int get_size() const;
+		Function& operator[](int n);
+		Function operator[](int n) const;
+		void appendel(int n, Function a);
+		void dellel(int n);
+		Function find_min_derivative();
 	};
-
-	int index_of_min_value(const Functionlist& function, float x);
-
 }
