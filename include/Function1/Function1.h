@@ -2,8 +2,6 @@
 
 namespace function {
 
-	//const float E = 2.718f;
-
 	enum class Type {
 		log,
 		power,
@@ -18,9 +16,6 @@ namespace function {
 		float _a;
 		float _b;
 		float _c;
-		//float _x;//убрать так как это не параметры функции
-
-		//Function(Type type);
 
 	public:
 		Function();
@@ -37,9 +32,7 @@ namespace function {
 
 	};
 
-	//надо подумать
 
-	//надо найти минимальны элемент в функции проихводной с данным аргументом
 	class FunctionList {
 	public:
 		static const int N = 10;
