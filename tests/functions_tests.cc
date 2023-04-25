@@ -7,9 +7,11 @@ using namespace function;
 //проверка работы конструктора без параметров
 TEST(FunctionTests, FuncConstructorCommonGet) {
     Function a;
+    FunctionList b;
     EXPECT_EQ(a.get_a(), 0);
     EXPECT_EQ(a.get_b(), 0);
     EXPECT_EQ(a.get_c(), 0);
+    EXPECT_EQ(b.get_size(), 0);
 }
 
 TEST(FunctionTests, power_ComputeValue) {
@@ -84,7 +86,23 @@ TEST(Func_list_Test, Test2) {
     functions.add(four);
 
     int index = functions.last_min(1);
-
     ASSERT_EQ(index, 3);
+
+    int size1 = functions.get_size();
+    EXPECT_EQ(size1, 4);
+
+    functions.remove(2);
+    int size2 = functions.get_size();
+    EXPECT_EQ(size2, 3);
+
+    /*functions.insert(4, {Function(Type::power, 5, 2)});
+    int size3 = functions.get_size();
+    EXPECT_EQ(size3, 4);*/
+
+    // insert;
+    ASSERT_ANY_THROW(functions.insert(5, { Function (Type::power, 5, 2) }));
+    //remove;
+    ASSERT_ANY_THROW(functions.remove(-1));
+
 }
 

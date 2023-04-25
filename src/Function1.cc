@@ -11,7 +11,7 @@ using namespace function;
 using namespace std;
 
 
-Function::Function() : _a(0), _b(0), _c(0) {}
+Function::Function() : _type(Type::power), _a(0), _b(0), _c(0) {}
 
 Function::Function(Type type, float c) : _c(c), _a(0), _b(0) {
     _type = type;
@@ -46,11 +46,6 @@ float Function::compute_value(float const x) const {
         return _c * log(abs(x));
     case Type::power:
         return _a * pow(x, _b);
-    case Type::log_p:
-        if(x==0)
-            throw invalid_argument("[Function::compute_value] proizosholo delenie na 0.");
-        else
-        return _c * (1/x);
     case Type::log_pp:
         return _c * (x * log(x) - x);
     default:
@@ -61,7 +56,7 @@ float Function::compute_value(float const x) const {
 Function Function::compute_derivative() const {
     switch (_type) {
     case Type::log:
-        return Function(Type::log_p, _c);
+        return Function(Type::power, _c, -1);
     case Type::power:
         return Function(Type::power, _a * _b, _b - 1);
     default:
@@ -75,8 +70,7 @@ Function Function::compute_antiderivative() const {
         return Function(Type::log_pp, _c);
     case Type::power:
         if(_b==-1)
-            return Function(Type::log, 1);
-        else
+            return Function(Type::log, _a);
         return Function(Type::power, _a / (_b + 1), _b + 1);
     default:
         throw runtime_error("[Function::compute_antiderivative] Invalid function type.");

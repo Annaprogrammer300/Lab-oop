@@ -18,7 +18,7 @@ if(MSVC)
 endif()
 
 # Объявляем библиотеку
-add_library(Function1 SHARED "include/Function1/Function1.h" "src/Function1.cc" "src/FunctionList.cpp")
+add_library(Function1 SHARED "include/Function1/Function1.h" "src/Function1.cc" "src/FunctionList.cc")
 target_include_directories(Function1 PUBLIC "include")
 
 # Подключаем googletest
@@ -28,5 +28,5 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # Объявляем тесты
-add_executable(functions_tests "tests/functions_tests.cc" "src/FunctionList.cpp")
+add_executable(functions_tests "tests/functions_tests.cc" "src/FunctionList.cc")
 target_link_libraries(functions_tests Function1 GTest::gtest_main)

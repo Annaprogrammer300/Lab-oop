@@ -5,7 +5,6 @@ namespace function {
 	enum class Type {
 		log,
 		power,
-		log_p,
 		log_pp
 
 	};
@@ -15,7 +14,7 @@ namespace function {
 		Type _type;
 		float _a;
 		float _b;
-		float _c;
+		float _c;//можно убрать эту пременную
 
 	public:
 		Function();
@@ -32,17 +31,28 @@ namespace function {
 
 	};
 
+	//std::ostream& operator<<(std::ostream& stream, const Function& f);
 
 	class FunctionList {
 	public:
-		static const int N = 10;
+		//static const int N = 10;
 		FunctionList();
+		FunctionList(const FunctionList& copy);
+		void swap(FunctionList& rhs) noexcept;
+		FunctionList& operator=(FunctionList copy);
+		~FunctionList();
 		int get_size() const;
-		Function operator[](int index) const;
+		const Function& operator[](int index) const;
+		Function& operator[](int index);
+		void insert(int index, Function f);
 		void add(const Function& _F);
 		int last_min(const double x);
+		void remove(int index);
+		void clear();
 	private:
-		Function listf[N];
+		Function** listf;
 		int _size;
 	};
+
+	//std::ostream& operator<<(std::ostream& stream, const FunctionList& f);
 }
