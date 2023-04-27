@@ -1,5 +1,11 @@
 #pragma once
 
+#include <string>
+#include <stdexcept>
+#include <iostream>
+#include <cassert>
+
+
 namespace function {
 
 	enum class Type {
@@ -20,7 +26,8 @@ namespace function {
 		Function();
 		Function(Type type, float a, float b);
 		Function(Type type, float c);
-		Type get_type() const;//получать тип
+		Type get_f_type() const;
+		std::string get_type() const;//получать тип
 		float get_a() const;//получать а
 		float get_b() const;
 		float get_c() const;
@@ -31,9 +38,11 @@ namespace function {
 
 	};
 
-	//std::ostream& operator<<(std::ostream& stream, const Function& f);
+	std::ostream& operator<<(std::ostream& stream, const Function& f);
 
 	class FunctionList {
+		Function** listf;
+		int _size;
 	public:
 		//static const int N = 10;
 		FunctionList();
@@ -49,10 +58,8 @@ namespace function {
 		int last_min(const double x);
 		void remove(int index);
 		void clear();
-	private:
-		Function** listf;
-		int _size;
+	
 	};
 
-	//std::ostream& operator<<(std::ostream& stream, const FunctionList& f);
+	std::ostream& operator<<(std::ostream& stream, const FunctionList& f);
 }

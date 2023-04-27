@@ -4,6 +4,8 @@
 #include <cassert>
 #include <cmath>
 #include <stdexcept>
+#include <string>
+
 
 
 
@@ -22,9 +24,20 @@ Function::Function(Type type, float a, float b) : _a(a), _b(b), _c(0) {
     _type = type;
 }
 
-
-Type Function::get_type() const {
+Type Function::get_f_type() const {
     return _type;
+}
+
+std::string Function::get_type() const {
+    switch (_type)
+    {
+    case Type::log:
+        return "Log";
+    case Type::power:
+        return "Power";
+    default:
+        throw runtime_error("Unknown type");
+    }
 }
 
 float Function::get_a() const {
@@ -77,6 +90,16 @@ Function Function::compute_antiderivative() const {
     }
 }
 
+std::ostream& function::operator<<(std::ostream& stream, const Function& f) {
+    if (f.get_type() == "Power")
+        stream << "Тип функции: " << f.get_type() << " \n "
+        << "    Значение a: " << f.get_a() << " \n "
+        << "    Значение b: " << f.get_b() << " \n "<< endl;
+    else
+        stream << "Тип функции: " << f.get_type() << " \n "
+        << "    Значение c: " << f.get_c() << " \n "<< endl;
+    return stream;
+}
 
 
 

@@ -2,6 +2,8 @@
 
 #include <Function1/Function1.h>
 using namespace function;
+using namespace std;
+
 
 
 //проверка работы конструктора без параметров
@@ -16,7 +18,7 @@ TEST(FunctionTests, FuncConstructorCommonGet) {
 
 TEST(FunctionTests, power_ComputeValue) {
     Function power1(Type::power, 2, 3);
-    EXPECT_EQ(power1.get_type(), Type::power);
+    EXPECT_EQ(power1.get_f_type(), Type::power);
     EXPECT_EQ(power1.get_a(), 2);
     EXPECT_EQ(power1.get_b(), 3);
     EXPECT_EQ(power1.compute_value(2), 16);
@@ -24,7 +26,7 @@ TEST(FunctionTests, power_ComputeValue) {
 
 TEST(FunctionTests, log_ComputeValue) {
     Function log1(Type::log, 1);
-    EXPECT_EQ(log1.get_type(), Type::log);
+    EXPECT_EQ(log1.get_f_type(), Type::log);
     EXPECT_EQ(log1.get_c(), 1);
     EXPECT_NEAR(log1.compute_value(-2), 0.693, 0.001f);
 }

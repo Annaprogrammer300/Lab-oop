@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cmath>
 #include <stdexcept>
+#include <string>
 
 
 
@@ -61,6 +62,7 @@ const Function& FunctionList::operator[](int index) const {
     return *listf[index];
 }
 
+
 Function& FunctionList::operator[](int index) {
     if (index < 0 || index >= _size) {
         throw out_of_range("[FunctionList::operator[] Index is out of range.");
@@ -112,18 +114,13 @@ void FunctionList::remove(int index) {
     --_size;
 }
 
-/*const FunctionList& get_item(int index) const {
-    if (index < 0 || _size <= index)
-        throw runtime_error("[Users::get_item]Invalid index");
-    return *listf[index];*/
-//}
 
-/*std::ostream& operator<<(std::ostream& stream, const FunctionList& list) {
-    stream << list.get_size() << " accounts: " << endl;
+std::ostream& function::operator<<(std::ostream& stream, const FunctionList& list) {
+    stream << list.get_size() << " Функции: " << endl;
     for (int i = 0; i < list.get_size(); ++i)
         cout << "  " << i + 1 << ") " << list[i];
     return stream;
-}*/
+}
 
 int FunctionList::last_min(const double x) {
     if (_size == 0)
