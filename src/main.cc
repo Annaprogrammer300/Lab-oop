@@ -52,7 +52,7 @@ int main()
 			break;
 
 		case 52:
-			cout << "Введите индекс функции, у которую нужно вычислить: ";
+			cout << "Введите индекс функции, у которой нужно вычислить: ";
 			cin >> index;
 			cout << "Введите аргумент функции\n";
 			cin >> x;
@@ -60,19 +60,15 @@ int main()
 			break;
 
 		case 53:
-			cout << "Введите индекс функции, у которую нужно вычислить производную: ";
+			cout << "Введите индекс функции, у которой нужно вычислить производную: ";
 			cin >> index;
-			cout << "Введите аргумент функции\n";
-			cin >> x;
-			cout << "Производная:  " << f[index].compute_derivative().compute_value(x) << endl;
+			cout << "Производная:  " << f[index].compute_derivative() << endl;
 			break;
 
 		case 54:
 			cout << "Введите индекс функции, у которой нужно вычислить первообразную: ";
 			cin >> index;
-			cout << "Введите аргумент функции\n";
-			cin >> x;
-			cout << "Первообразная:  " << f[index].compute_antiderivative().compute_value(x) << endl;
+			cout << "Первообразная:  " << f[index].compute_antiderivative() << endl;
 			break;
 
 		case 55:

@@ -7,14 +7,10 @@ using namespace std;
 
 TEST(Func_list_Test, Container) {
     FunctionList functions;
-    Function one(Type::power, 2, 3),
-        two(Type::power, 1, 3),
-        three(Type::log, 1),
-        four(Type::log, 2);
-    functions.add(one);
-    functions.add(two);
-    functions.add(three);
-    functions.add(four);
+    functions.add(Function(Type::power, 2, 3));
+    functions.add(Function(Type::power, 1, 3));
+    functions.add(Function(Type::log, 1));
+    functions.add(Function(Type::log, 2));
 
     int index = functions.last_min(1);
 
@@ -24,14 +20,10 @@ TEST(Func_list_Test, Container) {
 
 TEST(Func_list_Test, Size) {
     FunctionList functions;
-    Function one(Type::power, 2, 3),
-        two(Type::power, 1, 3),
-        three(Type::log, 1),
-        four(Type::log, 2);
-    functions.add(one);
-    functions.add(two);
-    functions.add(three);
-    functions.add(four);
+    functions.add(Function(Type::power, 2, 3));
+    functions.add(Function(Type::power, 1, 3));
+    functions.add(Function(Type::log, 1));
+    functions.add(Function(Type::log, 2));
 
     EXPECT_EQ(functions.get_size(), 4);
 }
@@ -45,49 +37,25 @@ TEST(Func_list_Test, constructor) {
 
 TEST(Func_list_Test, insert) {
     FunctionList functions;
-    Function one(Type::power, 2, 3),
-        two(Type::power, 1, 3),
-        three(Type::log, 1),
-        four(Type::log, 2);
-    functions.add(one);
-    functions.add(two);
-    functions.add(three);
-    functions.add(four);
+    functions.add(Function(Type::power, 2, 3));
+    functions.add(Function(Type::power, 1, 3));
+    functions.add(Function(Type::log, 1));
+    functions.add(Function(Type::log, 2));
 
     ASSERT_ANY_THROW(functions.insert(5, { Function(Type::power, 5, 2) }));
     ASSERT_NO_THROW(functions.insert(2, { Function(Type::power, 5, 2) }));
+    EXPECT_EQ(functions.get_size(), 5);
 }
 
 TEST(Func_list_Test, remove) {
     FunctionList functions;
-    Function one(Type::power, 2, 3),
-        two(Type::power, 1, 3),
-        three(Type::log, 1),
-        four(Type::log, 2);
-    functions.add(one);
-    functions.add(two);
-    functions.add(three);
-    functions.add(four);
+    functions.add(Function(Type::power, 2, 3));
+    functions.add(Function(Type::power, 1, 3));
+    functions.add(Function(Type::log, 1));
+    functions.add(Function(Type::log, 2));
 
     ASSERT_ANY_THROW(functions.remove(5));
     ASSERT_ANY_THROW(functions.remove(-1));
     ASSERT_NO_THROW(functions.remove(2));
-}
-
-TEST(Func_list_Test, test1) {
-    FunctionList functions;
-    Function one(Type::power, 2, 3),
-        two(Type::power, 1, 3),
-        three(Type::log, 1),
-        four(Type::log, 2);
-    functions.add(one);
-    functions.add(two);
-    functions.add(three);
-    functions.add(four);
-
-    functions.remove(3);
     EXPECT_EQ(functions.get_size(), 3);
-
-    functions.insert(2, { Function(Type::power, 5, 2) });
-    EXPECT_EQ(functions.get_size(), 4);
 }

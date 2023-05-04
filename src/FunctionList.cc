@@ -104,6 +104,7 @@ void FunctionList::add(const Function& f) {
 
 void FunctionList::remove(int index) {
     if (index < 0 || index >= _size) {
+
         throw runtime_error("[Func_list::remove Func_list is empty");
     }
 
