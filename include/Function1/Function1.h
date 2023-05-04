@@ -50,6 +50,7 @@ namespace function {
 		void swap(FunctionList& rhs) noexcept;
 		FunctionList& operator=(FunctionList copy);
 		~FunctionList();
+
 		int get_size() const;
 		const Function& operator[](int index) const;
 		Function& operator[](int index);

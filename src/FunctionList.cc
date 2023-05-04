@@ -71,16 +71,15 @@ Function& FunctionList::operator[](int index) {
 }
 
 void FunctionList::insert(int index, Function f) {
-    /*if (_size <= index || index <= 0)
-        throw runtime_error("[Func_list::insert] Going outside the array");*/
+    
     if (index < 0 || _size <= index)
-        throw runtime_error("[Func_list::insert] Index is out of range.");
+        throw runtime_error("[FunctionList::insert] Index is out of range.");
     auto list = new Function * [_size + 1];
 
     for (int i = 0; i < _size; ++i)
         list[i] = listf[i];
 
-    for (int i = _size; i > index; -i)
+    for (int i = _size; i > index; --i)
         list[i] = list[i - 1];
     list[index] = new Function(f);
 
@@ -116,7 +115,7 @@ void FunctionList::remove(int index) {
 
 
 std::ostream& function::operator<<(std::ostream& stream, const FunctionList& list) {
-    stream << list.get_size() << " Функции: " << endl;
+    stream << list.get_size() << " функции: " << endl;
     for (int i = 0; i < list.get_size(); ++i)
         cout << "  " << i + 1 << ") " << list[i];
     return stream;

@@ -19,11 +19,9 @@ endif()
 
 # Объявляем библиотеку
 add_library(Function1 SHARED 
-"include/Function1/Function1.h" 
-"include/Function1/Function_menu.h" 
-"src/Function1.cc" 
-"src/FunctionList.cc"
-"src/Function_menu.cc"
+    "include/Function1/Function1.h" 
+    "src/Function1.cc" 
+    "src/FunctionList.cc"
 )
 target_include_directories(Function1 PUBLIC "include")
 
@@ -34,9 +32,12 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # Объявляем тесты
-add_executable(functions_tests "tests/functions_tests.cc" "src/FunctionList.cc")
+add_executable(functions_tests "tests/functions_tests.cc" "tests/functionsList_tests.cc")
 target_link_libraries(functions_tests Function1 GTest::gtest_main)
 
 # Объявляем исполняемый файл
-add_executable(main "src/main.cc")
+add_executable(main 
+    "include/Function1/Function_menu.h" 
+    "src/Function_menu.cc"
+    "src/main.cc")
 target_link_libraries(main Function1)

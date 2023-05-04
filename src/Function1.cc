@@ -92,12 +92,10 @@ Function Function::compute_antiderivative() const {
 
 std::ostream& function::operator<<(std::ostream& stream, const Function& f) {
     if (f.get_type() == "Power")
-        stream << "Тип функции: " << f.get_type() << " \n "
-        << "    Значение a: " << f.get_a() << " \n "
-        << "    Значение b: " << f.get_b() << " \n "<< endl;
+        stream << "Тип функции:  " << f.get_type() << "  " << f.get_a() << " х ^ " << f.get_b() << " \n " << endl;
+       
     else
-        stream << "Тип функции: " << f.get_type() << " \n "
-        << "    Значение c: " << f.get_c() << " \n "<< endl;
+        stream << "Тип функции :  " << f.get_type() << "  " << f.get_c() << " ln х" << " \n "<< endl;
     return stream;
 }
 

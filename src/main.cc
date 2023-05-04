@@ -72,7 +72,7 @@ int main()
 			cin >> index;
 			cout << "Введите аргумент функции\n";
 			cin >> x;
-			cout << "Первообразная:  " << f[index].compute_antiderivative().compute_value(x) << endl;
+			cout << "Первообразная:  " << f[index].compute_antiderivative().compute_value(x) << " + C " << endl;
 			break;
 
 		case 55:
