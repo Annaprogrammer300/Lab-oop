@@ -41,7 +41,7 @@ namespace function {
 	std::ostream& operator<<(std::ostream& stream, const Function& f);
 
 	class FunctionList {
-		Function** listf;
+		Function** _list;
 		int _size;
 	public:
 		//static const int N = 10;
