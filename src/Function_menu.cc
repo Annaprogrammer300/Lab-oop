@@ -32,8 +32,9 @@ int menu::get_key()
 		return key;
 }
 
-Function menu::create_function() {
-	Function f;
+FunctionPtr menu::create_function() {
+	Power f;
+	Log f1;
 	int type;
 	float a, b, c;
 
@@ -45,14 +46,14 @@ Function menu::create_function() {
 	if (type == 1) {
 		cout << " Введите коэффициент перед функцией \n " << "c=";
 		cin >> c;
-		return Function (Type::log, c);
+		return make_shared <Log>(c);
 	}
 	if (type == 2) {
 		cout << " Введите коэффициент перед функцией \n " << "a=";
 		cin >> a;
 		cout << " Введите степень функции \n " << "b=";
 		cin >> b;
-		return Function(Type::power, a, b);
+		return make_shared <Power>(a,b);
 	}
 	
 }
