@@ -34,7 +34,8 @@ int main()
 			{
 
 			case 49:
-				f.add(create_function());
+				f.add(create_function());;
+				cout << "\n" << endl;
 				f.print();
 				break;
 
@@ -42,6 +43,7 @@ int main()
 				cout << "Введите индекс, по которому нужно вставить новую функцию: ";
 				cin >> index;
 				f.insert(index, create_function());
+				cout << "\n" << endl;
 				f.print();
 				break;
 
@@ -50,36 +52,39 @@ int main()
 				cout << "Введите индекс, по которому нужно удалить функцию: ";
 				cin >> index;
 				f.remove(index);
+				cout << "\n" << endl;
 				f.print();
 				break;
 
 			case 52:
-				cout << "Введите индекс функции, у которой нужно вычислить: ";
+				cout << "Введите индекс функции, которую нужно вычислить: ";
 				cin >> index;
-				cout << "Введите аргумент функции\n";
+				cout << "Введите аргумент функции\n" << "x= ";
 				cin >> x;
 				cout << "Значение функции:  " << f[index]->compute_value(x) << endl;
 				f.print();
 				break;
 
 			case 53:
-				cout << "Введите индекс функции, у которой нужно вычислить производную: ";
+				cout << "Введите индекс функции, у которой нужно найти производную: ";
 				cin >> index;
-				cout << "Производная:  " << f[index]->compute_derivative() << endl;
+				cout << "Производная:  " << endl; f[index]->compute_derivative()->print();
+				cout << "\n" << endl;
 				f.print();
 				break;
 
 			case 54:
-				cout << "Введите индекс функции, у которой нужно вычислить первообразную: ";
+				cout << "Введите индекс функции, у которой нужно найти первообразную: ";
 				cin >> index;
-				cout << "Первообразная:  " << f[index]->compute_antiderivative() << endl;
+				cout << "Первообразная:  " << endl; f[index]->compute_antiderivative()->print();
+				cout << "\n" << endl;
 				f.print();
 				break;
 
 			case 55:
-				cout << "Введите аргумент для вычисления минамальной производной среди заданных функций\n";
+				cout << "Введите аргумент для вычисления минамальной производной среди заданных функций\n"<<"x= ";
 				cin >> x;
-				cout << "Индекс функции с минимальной производной: " << f.last_min(x);
+				cout << "Индекс функции с минимальной производной: " << f.last_min(x) << "\n" << endl;
 				f.print();
 				break;
 

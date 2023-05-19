@@ -72,7 +72,7 @@ FunctionPtr Log::compute_derivative() const {
 }
 
 FunctionPtr Power::compute_derivative() const {
-    return std::make_shared<Power>(_a * _b, _b - 1);
+    return  std::make_shared<Power>(_a * _b, _b - 1);
 }
 
 FunctionPtr Log::compute_antiderivative() const {
@@ -85,12 +85,12 @@ FunctionPtr Power::compute_antiderivative() const {
     return std::make_shared<Power>(_a / (_b + 1), _b + 1);
 }
 
-void Log::print()const {
-    cout<< "Тип функции:  " << _a << " х ^ " << _b << " \n " << endl;
+void Power::print()const {
+    cout<< " Функция:  " << _a << " х ^ " << _b << " \n " << endl;
 }
 
-void Power::print()const {
-    cout << "Тип функции:  " << _c << " ln х" << " \n " << endl;
+void Log::print()const {
+    cout << " Функция:  " << _c << " ln х" << " \n " << endl;
 }
 
 FunctionPtr Log::clone() const {
