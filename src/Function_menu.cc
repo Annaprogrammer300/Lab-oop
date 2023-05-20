@@ -41,8 +41,7 @@ FunctionPtr menu::create_function() {
 
 	cout << "Введите тип функции (1-Натуральный логарифм 2-Возведение в степень): ";
 	cin >> type;
-	if (type != 1 && type != 2)
-		throw runtime_error("Invalid type");
+
 	if (type == 1) {
 		cout << " Введите коэффициент перед функцией \n " << "c=";
 		cin >> c;
@@ -55,6 +54,7 @@ FunctionPtr menu::create_function() {
 		cin >> b;
 		return make_shared <Power>(a,b);
 	}
-	
+	throw runtime_error("Invalid type");
+
 }
 

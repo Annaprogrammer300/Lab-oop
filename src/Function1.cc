@@ -10,15 +10,15 @@ using namespace function;
 using namespace std;
 
 
-float Function::get_a() const {
+float Power::get_a() const {
     return _a;
 }
 
-float Function::get_b() const {
+float Power::get_b() const {
     return _b;
 }
 
-float Function::get_c() const {
+float Log::get_c() const {
     return _c;
 }
 
@@ -28,7 +28,7 @@ float Log::compute_value(float const x) const {
     return _c * log(abs(x));
 }
 
-float Log_pp::compute_value(float const x) const {
+float Log_primordial::compute_value(float const x) const {
     return _c * (x * log(x) - x);
 }
 
@@ -46,10 +46,13 @@ FunctionPtr Power::compute_derivative() const {
     return  std::make_shared<Power>(_a * _b, _b - 1);
 }
 
+FunctionPtr Log_primordial::compute_derivative() const {
+    throw runtime_error("не реализована возможность.");
+}
 
 
 FunctionPtr Log::compute_antiderivative() const {
-    return std::make_shared<Log_pp>(_c);
+    return std::make_shared<Log_primordial>(_c);
 }
 
 FunctionPtr Power::compute_antiderivative() const {
@@ -58,6 +61,9 @@ FunctionPtr Power::compute_antiderivative() const {
     return std::make_shared<Power>(_a / (_b + 1), _b + 1);
 }
 
+FunctionPtr Log_primordial::compute_antiderivative() const {
+    throw runtime_error("не реализована возможность.");
+}
 
 
 void Power::print()const {
@@ -68,6 +74,9 @@ void Log::print()const {
     cout << " Функция:  " << _c << " ln х" << " \n " << endl;
 }
 
+void Log_primordial::print()const {
+    cout << " Функция:  " << _c << "(x lnх - x)" << " \n " << endl;
+}
 
 
 FunctionPtr Log::clone() const {
@@ -78,6 +87,6 @@ FunctionPtr Power::clone() const {
     return make_shared<Power>(_a,_b);
 }
 
-FunctionPtr Log_pp::clone() const {
+FunctionPtr Log_primordial::clone() const {
     return make_shared<Log>(_c);
 }

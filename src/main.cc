@@ -13,17 +13,15 @@ int main()
 	SetConsoleCP(1251);
 	FunctionList f;
 
-	menu::text_menu();
+	//menu::text_menu();
 
 	while (true)
 	{
+		system("cls");
+		menu::text_menu();
 		int choice = menu::get_key();
 		int index = 0;
 		float x;
-
-		system("cls");
-		menu::text_menu();
-
 
 		if (choice == 57) {
 			f.clear();
@@ -93,15 +91,14 @@ int main()
 				break;
 			}
 		}
-
 		catch (const exception& ex) {
 			cout << ex.what() << endl;
 
 		}
 		catch (...) {
 			cout << "Unknown error" << endl;
-		}
-
+		}//Амир лучший!
+		getch();
 	}
 	return 0;
 }

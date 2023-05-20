@@ -10,29 +10,12 @@
 
 namespace function {
 
-	/*enum class Type {
-		log,
-		power,
-		log_pp
-
-	};*/
-
 	class Function;
 	using FunctionPtr = std::shared_ptr<Function>;
 
 	class Function {
-	protected:
-		float _a;
-		float _b;
-		float _c;//можно убрать эту пременную
-
 	public:
-		Function(): _a(0), _b(0), _c(0) {};
-		Function(float a, float b) : _c(0), _a(a), _b(b) {};
-		Function( float c): _c(c), _a(0), _b(0) {};
-		float get_a() const;//получать а
-		float get_b() const;
-		float get_c() const;
+		Function(){};
 		virtual void print() const = 0;
 		virtual FunctionPtr clone() const = 0;
 
@@ -44,9 +27,14 @@ namespace function {
 	};
 
 	class Log: public Function {
+	protected:
+		float _c;
 	public:
-		Log() : Function() {}
-		Log(float c) : Function(c){}
+		//Log() : Function() {}
+		Log() : _c(0) {}
+		Log(float c) : _c(c){}
+
+		float get_c() const;
 
 		void print() const override;
 		FunctionPtr clone() const override;
@@ -58,9 +46,15 @@ namespace function {
 	};
 
 	class Power : public Function {
+	private:
+		float _a;
+		float _b;
 	public:
-		Power() : Function() {}
-		Power(float a, float b) : Function(a, b) {}
+		//Power(): Function() {}
+		Power() : _a(0),_b(0) {}
+		Power(float a, float b) : _a(a), _b(b) {}
+		float get_a() const;//получать а
+		float get_b() const;
 
 		void print() const override;
 		FunctionPtr clone() const override;
@@ -71,13 +65,18 @@ namespace function {
 
 	};
 
-	class Log_pp : public Log {
+	class Log_primordial : public Function {//primordial
+	protected:
+		float _c;
 	public:
-		Log_pp() : Log() {}
-		Log_pp(float c) : Log(c) {}
+		Log_primordial() : Function() {}
+		Log_primordial(float c) : Function(), _c(c) {}
 		FunctionPtr clone() const override;
+		void print() const override;
 
 		virtual float compute_value(float x) const override;
+		virtual FunctionPtr compute_derivative() const override;
+		virtual FunctionPtr compute_antiderivative() const override;
 	};
 
 	class FunctionList {
