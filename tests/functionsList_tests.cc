@@ -37,15 +37,14 @@ TEST(Func_list_Test, constructor) {
 }
 
 
-//TEST(Func_list_Test, insert) {
-//    auto functions = construct();
-//    auto  functions1 = Power(5, 2)
-//    ASSERT_ANY_THROW(functions.insert(5, { Function(Type::power, 5, 2) }));
-//    ASSERT_NO_THROW(functions.insert(2, functions1));
-//    EXPECT_EQ(functions.get_size(), 5);
-//}
+TEST(Func_list_Test, insert) {
+   auto functions = construct();
+   auto f = Power(3, 5);
+   functions.insert(2, f.clone());
+   EXPECT_EQ(functions.get_size(), 5);
+}
 
-TEST(Func_list_Test, remove) {
+TEST(Func_list_Test, Remove) {
     auto  functions = construct();
     functions.remove(1);
 
